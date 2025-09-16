@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>ENEM 2025 - Passe com Estratégia</title>
+  <style>
+    /* ================= GERAL ================= */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #333;
+         -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Padrão */
+  }
+    }
+    a { text-decoration: none; }
+    h1,h2,h3,h4 { margin: 0; }
+
+    /* ================= HERO ================= */
+   .hero {
+  position: relative;
+  height: 699px;
+  overflow: hidden; /* impede que o vídeo vaze */
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* cobre todo o hero como cover */
+  filter: brightness(2.2); /* mesmo efeito do seu background */
+}
+
+    .hero .overlay {
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.6);
+    }
+    .hero-content {
+      position: relative;
+      max-width: 800px;
+      padding: 0 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease;
+    }
+    .hero-content.reveal { opacity:1; transform:translateY(0); }
+    /* Animação de entrada para textos */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero section */
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  opacity: 0; /* começa invisível */
+  animation: fadeSlideUp 1s forwards;
+  animation-delay: 0.3s; /* atraso para o h1 */
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  opacity: 0; /* começa invisível */
+  animation: fadeSlideUp 1s forwards;
+  animation-delay: 0.6s; /* atraso maior que h1 para entrar depois */
+}
+.video-banner {
+  width: 100%;
+  max-width: 1920px; 
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  height: clamp(120px, calc(100vw * 300 / 1920), 300px);
+  background: #000;
+}
+
+.video-banner video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+
+    /* ================= BOTÃO ================= */
+   .btn-cta {
+  display: inline-block;
+  background: linear-gradient(90deg, #FFD700, #FFD700); /* gradiente normal */
+  color: #fff; /* texto branco para contraste */
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+
+  margin-top: auto; /* empurra o botão para baixo */
+  margin-bottom: 30px; /* distancia do fundo */
+
+
+}
+    
+.btn-cta:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #1a237e, #6a1b9a); /* gradiente invertido no hover */
+  color: #fff; /* mantém texto branco */
+}
+
+    /* ================= BENEFÍCIOS ================= */
+    .benefits {
+  padding: 35px 20px;
+  background: linear-gradient(90deg, #6a1b9a, #1a237e);
+  text-align: center;
+}
+
+   .benefits h2 { 
+  font-size: 32px;
+  font-weight: 900;
+  text-align: center;
+  color: #FFD700; /* dourado/amarelo */
+  text-shadow: 
+    0 0 4px #FFD700, 
+    0 0 8px rgba(200, 100, 0, 0.6), 
+    0 0 12px rgba(255, 140, 0, 0.4);
+    margin-bottom: 20px;
+}
+
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+.card {
+  background: linear-gradient(90deg, #1a237e, #6a1b9a); /* gradiente do site ENEM */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+  color: #fff; /* texto branco */
+}
+    .card.reveal { opacity:1; transform:translateY(0);}
+.card img {
+  width: 100px;
+  margin-bottom: 15px;
+  animation: pulse 2s infinite; /* aplica a animação continuamente */
+}
+
+/* Definindo a animação */
+@keyframes pulse {
+  0% {
+    transform: scale(1); /* tamanho normal */
+  }
+  50% {
+    transform: scale(1.2); /* cresce 20% */
+  }
+  100% {
+    transform: scale(1); /* volta ao tamanho normal */
+  }
+}
+
+    /* ================= SOBRE O MÉTODO ================= */
+.method {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start; /* alinhamento no topo do container */
+  padding: 35px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  background: linear-gradient(90deg, #6a1b9a, #1a237e);
+  border-radius: 0px; /* opcional */
+  color: #ffffff; /* cor padrão dos textos */
+}
+
+.method-img { 
+  flex: 1; 
+}
+
+.method-img img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+  .method-content {
+  flex: 1;
+  opacity: 1; /* visível */
+  transform: translateX(0); /* posição inicial */
+  transition: all 1s ease; /* para animação futura, se quiser */
+  margin-top: 15px; /* remove espaço acima */
+
+
+}
+
+.method-content.reveal { 
+  opacity: 1; 
+  transform: translateX(0);
+}
+
+.method-content h2 {
+  font-size: 2.0rem;
+  color: #ffd700; /* dourado */
+  margin-bottom: 5px; /* pequeno espaçamento entre H2 e parágrafo */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+
+}
+
+
+.method-content p {
+  margin: 5px 0;    /* pequeno espaço entre parágrafos */
+  line-height: 1.6; /* facilita a leitura */
+}
+
+/* Remove espaço acima do primeiro parágrafo */
+.method-content p:first-of-type {
+  margin-top: 0;
+}
+
+/* Remove espaço abaixo do último parágrafo */
+.method-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+
+    /* ================= DEPOIMENTOS ================= */
+.testimonials {
+  padding: 35px 20px;
+  background: linear-gradient(90deg, #6a1b9a, #1a237e);
+  text-align: center;
+}
+
+  .testimonials h2 { 
+  font-size: 2.0rem; 
+  margin-bottom: 10px; 
+  color: #ffd700; 
+}
+
+    .testimonials-grid { 
+      display:grid; 
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); 
+      gap:30px; 
+      max-width:1200px; 
+      margin:0 auto;
+    }
+    .testimonial {
+      background:white;
+      padding:20px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+      opacity:0; transform: translateY(20px); transition: all 0.8s ease;
+    }
+    .testimonial.reveal { opacity:1; transform:translateY(0);}
+    .testimonial h4 { margin-top:10px; font-weight:bold; }
+
+    /* ================= OFERTA ================= */
+    .offer { background: linear-gradient(90deg,#6a1b9a,#1a237e); color:white; padding:80px 20px; text-align:center; }
+    .offer h2 { font-size:2.0rem; margin-bottom:20px;}
+    .offer p { font-size:1.2rem; margin-bottom:30px;}
+    .offer .small-text { font-size:0.9rem; margin-top:15px; }
+
+    /* ================= FOOTER ================= */
+    .footer { background:#111; color:#aaa; text-align:center; padding:30px 20px; }
+
+    /* ================= RESPONSIVO ================= */
+    @media(max-width:768px){ 
+      .hero h1 { font-size:2.2rem; } 
+      .hero p { font-size:1rem; } 
+      .method { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+ <div class="hero">
+  <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:-1;">
+  <source src="01.mp4" type="video/mp4">
+</video>
+
+</div>
+
+  <!-- BENEFÍCIOS -->
+  <section class="benefits">
+    <h2>O método que te leva direto à aprovação</h2>
+    <div class="benefits-grid">
+      <div class="card">
+        <img src="icone1.webp" alt="Plano de Estudos">
+        <h3>Plano de estudos personalizado</h3>
+        <p>Cronograma adaptado ao seu nível, garantindo evolução rápida.</p>
+      </div>
+      <div class="card">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/008/490/534/small/one-thousand-golden-number-1000-anniversary-birthday-price-png.png" alt="Redação Nota 1000">
+        <h3>Redação nota 1000</h3>
+        <p>Passo a passo para escrever redações que garantem aprovação com professores e corretores especialistas</p>
+      </div>
+      <div class="card">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/021/507/464/small_2x/check-list-on-paper-background-with-marked-bullets-free-png.png" alt="Simulados Comentados">
+        <h3>Simulados comentados</h3>
+        <p>pratique com provas reais e receba correções e análises detalhadas feitas por professores especialistas.</p>
+      </div>
+      <div class="card">
+        <img src="https://png.pngtree.com/png-vector/20221101/ourmid/pngtree-vip-icon-design-png-image_6404764.png" alt="Suporte VIP">
+        <h3>Suporte VIP</h3>
+        <p>Grupo exclusivo com professores e corretores especialistas para tirar suas dúvidas</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE O MÉTODO -->
+  <section class="method">
+    <div class="method-img">
+      <img src="inicio.jpg" alt="Professor ensinando">
+    </div>
+     <div class="method-content">
+      <h2>Como nosso método garante aprovação</h2></div>
+      <p>Nosso método é desenhado para você estudar de forma eficiente e focada, aprendendo apenas o que realmente cai no ENEM. Domine a Matemática, a redação e todas as matérias, garantindo notas altas e aprovação de verdade.</p>
+      <p><strong>Diferenciais:</strong> Redações corrigidas por professores especialistas com mestrado, doutorado e experiência no ENEM.
+
+Cronogramas personalizados que aceleram sua evolução.
+
+Técnicas de memorização e resolução de questões para aprender mais rápido.
+
+Estratégias de foco e desempenho para a prova.
+
+Simulados comentados com análises detalhadas.
+
+Grupo exclusivo com especialistas para tirar dúvidas.</p>
+    </div>
+    
+  </section>
+
+ <section class="aprovados">
+  <h2>Alunos Aprovados</h2>
+  <div class="carousel">
+    <div class="slides">
+      <div class="slide active">
+        <img src="1.jpg" alt="Aluno 1">
+        <div class="caption">
+          <p>Carlos - Aprovado em Medicina</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="2.jpg" alt="Aluno 2">
+        <div class="caption">
+          <p>João - Aprovado em Medicina</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="3.jpg" alt="Aluno 3">
+        <div class="caption">
+          <p> Guilherme - Aprovado em Medicina</p>
+        </div>
+      </div>
+            <div class="slide">
+        <img src="4.jpg" alt="Aluno 3">
+        <div class="caption">
+          <p> Daniel- Aprovado em Medicina</p>
+        </div>
+      </div>
+      
+                        <div class="slide">
+        <img src="6.jpg" alt="Aluno 3">
+        <div class="caption">
+          <p> Junior- Aprovado em Medicina</p>
+        </div>
+      </div>
+                        <div class="slide">
+        <img src="7.jpg" alt="Aluno 3">
+        <div class="caption">
+          <p> Emanoel- Aprovado em Medicina</p>
+        </div>
+      </div>
+                        <div class="slide">
+        <img src="8.jpg" alt="Aluno 3">
+        <div class="caption">
+          <p> Ítalo- Aprovado em Medicina</p>
+        </div>
+      </div>
+                        <div class="slide">
+        <img src="9.jpg" alt="Aluno 3">
+        <div class="caption">
+          <p> Marta- Aprovado em Medicina</p>
+        </div>
+      </div>
+                        <div class="slide">
+        <img src="10.jpg" alt="Aluno 3">
+        <div class="caption">
+          <p> Ingrid- Aprovado em Medicina</p>
+        </div>
+      </div>
+                        <div class="slide">
+        <img src="11.jpg" alt="Aluno 3">
+        <div class="caption">
+          <p> Luis- Aprovado em Medicina</p>
+        </div>
+      </div>
+                        <div class="slide">
+        <img src="12.jpg" alt="Aluno 3">
+        <div class="caption">
+          <p> Luisa- Aprovado em Medicina</p>
+        </div>
+      </div>
+                        <div class="slide">
+        <img src="13.png" alt="Aluno 3">
+        <div class="caption">
+          <p> Erick- Aprovado em Medicina</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botões -->
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </div>
+</section>
+
+<style>
+.aprovados {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 30px 10px;
+  background: linear-gradient(135deg, #6a1b9a, #1a237e); /* fundo roxo luxuoso */
+  color: #fff;
+}
+
+.aprovados h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #ffd700;
+}
+
+.carousel {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide img {
+  width: 60%;
+  border-radius: 10px;
+}
+
+.caption p {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: #ddd;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+</style>
+
+<script>
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove('active');
+    if (i === index) slide.classList.add('active');
+  });
+}
+
+function nextSlide() {
+  slideIndex = (slideIndex + 1) % slides.length;
+  showSlide(slideIndex);
+}
+
+function prevSlide() {
+  slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+  showSlide(slideIndex);
+}
+
+next.addEventListener('click', nextSlide);
+prev.addEventListener('click', prevSlide);
+
+// autoplay
+setInterval(nextSlide, 4000); // troca a cada 4s
+</script>
+<section class="porque-danilo">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <h2>Por que escolher o Enem Turbo?</h2>
+  <div class="cards">
+    <div class="card">
+      <i class="fas fa-users"></i>
+      <p><strong>+ de 2.869</strong> Alunos aprovados no Brasil inteiro.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-headset"></i>
+      <p>Professores especializados e experientes na área do Enem. </p>
+    </div>
+    <div class="card">
+      <i class="fas fa-thumbs-up"></i>
+      <p>95% de aprovação nos últimos anos</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-lock"></i>
+      <p>100% do processo online e seguro</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .porque-danilo {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 25px 20px; /* fundo mais estreito */
+    background: linear-gradient(135deg, #6a1b9a, #1a237e); /* roxo luxuoso */
+    color: #fff;
+  }
+
+  .porque-danilo h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .porque-danilo .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .porque-danilo .card {
+    background: transparent; /* sem box branco */
+    border-radius: 12px;
+    padding: 10px; /* altura menor */
+    transition: transform 0.2s ease-in-out;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .porque-danilo .card:hover {
+    transform: translateY(-3px);
+  }
+
+  .porque-danilo .card i {
+    font-size: 36px; /* ícones visíveis */
+    color: #FFD700; /* dourado elegante */
+    margin-bottom: 8px;
+  }
+
+  .porque-danilo .card p {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 480px) {
+    .porque-danilo .cards {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+  }
+</style>
+<section class="faixa-estudo">
+  <div class="faixa-estudo__container">
+    <!-- Ícone de chapéu de formando -->
+    <svg class="faixa-estudo__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#fff">
+      <path d="M32 4L2 20l30 16 30-16L32 4zm0 18L6 20l26 14 26-14-26-2zM12 30v10c0 6 20 12 20 12s20-6 20-12V30l-20 8-20-8z"/>
+    </svg>
+    <span class="faixa-estudo__texto">Prepare-se com os melhores</span>
+  </div>
+</section>
+
+<style>
+.faixa-estudo {
+  width: 100%;
+  background-color: #222; /* preto suave */
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.faixa-estudo__container {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* espaço entre ícone e texto */
+}
+
+.faixa-estudo__icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.faixa-estudo__texto {
+  color: #BF00FF; /* roxo neon mais vibrante */
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 0 4px #BF00FF, 0 0 8px #9B30FF; /* neon mais sutil */
+  animation: texto-animacao 2s ease-in-out infinite alternate;
+}
+
+/* Animação suave */
+@keyframes texto-animacao {
+  0% {
+    opacity: 0.9;
+    transform: translateX(0px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateX(0px);
+  }
+}
+</style>
+<section class="tirar-duvidas">
+  <div class="tirar-duvidas__container">
+    <div class="tirar-duvidas__texto">
+      <h2> Estude com os melhores especialistas do Brasil e junte-se aos milhares de alunos já aprovados com o Enem Turbo!</h2>
+      <div class="tirar-duvidas__botao">
+<button onclick="window.open('https://api.whatsapp.com/send?phone=554797564469&text=Olá! Me chamo....', '_blank')">
+  Fale com um Professor!
+</button>
+
+      </div>
+    </div>
+
+    <div class="tirar-duvidas__accordion">
+      <div class="accordion-item">
+        <button class="accordion">O que é o Enem Turbo?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="panel">
+          <p>O Enem Turbo é uma plataforma completa de estudos focada no Enem, desenvolvida para acelerar sua preparação com conteúdos estratégicos, professores especializados e métodos testados.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion">Quem são os professores?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="panel">
+          <p>Nosso time é formado por especialistas experientes no Enem, que já ajudaram milhares de alunos a conquistarem excelentes notas e aprovação em universidades públicas e privadas.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion">O curso é presencial ou online?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="panel">
+          <p>É totalmente online e seguro. Você estuda no seu tempo, com acesso ilimitado à plataforma.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion">Já ajudaram outros alunos?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="panel">
+          <p>Sim! Já são mais de 2.869 alunos aprovados em todo o Brasil com a metodologia Enem Turbo.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion">Vale a pena para quem está começando agora?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="panel">
+          <p>Com certeza! O Enem Turbo foi criado tanto para iniciantes quanto para alunos que já estão estudando, mas querem direcionamento estratégico para garantir uma boa nota.
+</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.tirar-duvidas {
+  background: linear-gradient(135deg, #001F54, #6A0DAD);
+  color: #fff;
+  padding: 30px 20px;
+  border-radius: 0px;
+  font-family: Arial, sans-serif;
+}
+
+.tirar-duvidas__texto p {
+  color: #f0f0f0;
+  margin-bottom: 8px;
+}
+
+.tirar-duvidas__texto h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.tirar-duvidas__botao button {
+  background: #8A2BE2;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tirar-duvidas__botao button:hover {
+  background: #6A0DAD;
+  transform: translateY(-2px);
+}
+
+.tirar-duvidas__accordion {
+  margin-top: 25px;
+}
+
+.accordion-item {
+  margin-bottom: 8px;
+}
+
+.accordion {
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 15px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+}
+
+.accordion i {
+  margin-left: 10px;
+}
+
+.accordion:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.panel {
+  padding: 0 15px;
+  background-color: rgba(255,255,255,0.05);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  border-radius: 8px;
+}
+
+.panel p {
+  padding: 8px 0;
+  font-size: 0.9rem;
+  color: #fff8b0; /* COR DA RESPOSTA PRETA */
+}
+</style>
+
+<script>
+const accordions = document.querySelectorAll('.accordion');
+
+accordions.forEach(acc => {
+  acc.addEventListener('click', () => {
+    // Fechar todos os painéis exceto o clicado
+    accordions.forEach(other => {
+      if(other !== acc){
+        other.classList.remove('active');
+        other.nextElementSibling.style.maxHeight = null;
+      }
+    });
+
+    // Alternar o painel clicado
+    acc.classList.toggle('active');
+    const panel = acc.nextElementSibling;
+    if(panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+});
+</script>
+<div class="video-banner">
+  <video autoplay muted playsinline loop preload="auto" poster="poster.jpg">
+    <source src="02.mp4" type="video/mp4">
+    <source src="video.webm" type="video/webm">
+    Seu navegador não suporta vídeo.
+  </video>
+</div>
+
+  <!-- OFERTA -->
+  <section id="oferta" class="offer">
+    <h2>🎓 Garanta seu Acesso Agora e Conquiste sua Aprovação!</h2>
+    <p>Inscreva-se agora e tenha acesso imediato a todas as aulas, materiais exclusivos e suporte VIP. Oferta especial por tempo limitado!</p>
+    <a href="https://seulinkdecheckout.com" target="_blank" class="btn-cta">Quero me inscrever agora</a>
+    <p class="small-text">🔥 Oferta especial por tempo limitado</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2025 Método ENEM Turbo. Todos os direitos reservados.
+  </footer>
+
+  <!-- ================= ANIMAÇÕES JS ================= -->
+  <script>
+    const revealElements = document.querySelectorAll('.card, .testimonial, .method-content, .hero-content, .btn-cta');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('reveal');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
